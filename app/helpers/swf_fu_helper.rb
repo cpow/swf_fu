@@ -21,14 +21,14 @@ module SwfFuHelper
   end
 
 
-  # Computes the path to an swf asset in the public 'swfs' directory.
+  # Computes the path to an swf asset in the public 'assets' directory.
   # Full paths from the document root will be passed through.
   # Used internally by +swf_tag+ to build the swf path.
   #
   # ==== Examples
-  #     swf_path("example")                            # => /swfs/example.swf
-  #     swf_path("example.swf")                        # => /swfs/example.swf
-  #     swf_path("fonts/optima")                       # => /swfs/fonts/optima.swf
+  #     swf_path("example")                            # => /assets/example.swf
+  #     swf_path("example.swf")                        # => /assets/example.swf
+  #     swf_path("fonts/optima")                       # => /assets/fonts/optima.swf
   #     swf_path("/fonts/optima")                      # => /fonts/optima.swf
   #     swf_path("http://www.example.com/game.swf")    # => http://www.example.com/game.swf
   #   
@@ -36,9 +36,9 @@ module SwfFuHelper
   #   
   #     ActionController::Base.asset_host = "http://assets.example.com"
   #     image_path("logo.jpg")                         # => http://assets.example.com/images/logo.jpg
-  #     swf_path("fonts/optima")                       # => http://assets.example.com/swfs/fonts/optima.swf
+  #     swf_path("fonts/optima")                       # => http://assets.example.com/assets/fonts/optima.swf
   def swf_path(source)
-    asset_paths.compute_public_path(source, 'swfs', :ext => 'swf')
+    asset_paths.compute_public_path(source, 'assets', :ext => 'swf')
   end
   alias_method :path_to_swf, :swf_path # aliased to avoid conflicts with an image_path named route
 
